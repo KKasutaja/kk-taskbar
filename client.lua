@@ -1,6 +1,6 @@
 local actionInProgress = false
 
--- Funktsioonid
+-- Functions
 local function TaskBar(name, text, time, clip, dict, cb)
 	if not actionInProgress then
 		actionInProgress = true
@@ -34,14 +34,14 @@ end
 local function DrawBar(time, text, cb)
 	TaskBar('deprecated_taskBar', text, time, nil, nil, cb)
 end
--- Funktsioonide lõpp
+-- Functions end
 
--- Exportid
+-- Exports
 exports('TaskBar', TaskBar)
 
 exports('DrawBar', DrawBar)
--- Exportide lõpp
+-- Exports end
 
--- Eventid
+-- Events
 RegisterNetEvent('KKF.UI.TaskBar', TaskBar)
--- Eventide lõpp
+-- Events end
