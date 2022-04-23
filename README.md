@@ -1,8 +1,5 @@
 # kk-taskbar
 
-## Dependencies
-- [ox_lib](https://github.com/overextended/ox_lib)
-
 #### Preview [https://i.imgur.com/DoYpuzT.png]
 
 #### Usage
