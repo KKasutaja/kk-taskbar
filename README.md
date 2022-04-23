@@ -14,9 +14,7 @@ exports['kk-taskbar']:TaskBar(name, text, time, clip, dict, function()
     -- Code
 end)
 
-local progress = exports['kk-taskbar']:TaskBar(name, text, time, clip, dict)
-
-if progress then
+if exports['kk-taskbar']:TaskBar(name, text, time, clip, dict) then
     -- Code
 end
 
