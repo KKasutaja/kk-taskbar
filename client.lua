@@ -23,12 +23,19 @@ local function TaskBar(name, text, time, clip, dict, cb)
 
 			SendNUIMessage({type = 'ui', display = true, time = time, text = text})
 
-			SetTimeout(time + 100, function()
-				if clip then ClearPedTasks(playerPed) end
-				if cb then cb() end
+			if cb then
+				SetTimeout(time + 100, function()
+					if clip then ClearPedTasks(cache.ped) end
+					cb()
 
-				actionInProgress = false
-			end)
+					actionInProgress = false
+				end)
+			else
+				if clip then ClearPedTasks(cache.ped) end
+				Wait(time + 100)
+
+				actionInProgress = false; return true
+			end
 		else
 			print('[KKF]: Time and text are not correct.')
 		end
