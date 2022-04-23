@@ -10,9 +10,15 @@ TriggerEvent('KKF.UI.TaskBar', name, text, time, clip, dict, function()
     -- Code
 end)
 
-exports['kk-taskbar']:Taskbar(name, text, time, clip, dict, function()
+exports['kk-taskbar']:TaskBar(name, text, time, clip, dict, function()
     -- Code
 end)
+
+local progress = exports['kk-taskbar']:TaskBar(name, text, time, clip, dict)
+
+if progress then
+    -- Code
+end
 
 -- DEPRECATED USAGE
 exports['kk-taskbar']:DrawBar(time, text, function()
