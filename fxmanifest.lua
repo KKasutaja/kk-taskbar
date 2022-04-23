@@ -12,11 +12,5 @@ repository   'https://github.com/kkasutaja/kk-taskbar'
 description  'Taskbar system for FiveM'
 
 -- Script Files
-dependencies {
-    'ox_lib'
-}
-
-shared_script '@ox_lib/init.lua'
-
 server_script 'server.lua'
 client_script 'client.lua'
