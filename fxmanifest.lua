@@ -5,7 +5,7 @@ game         'gta5'
 
 -- Resource Data
 name         'kk-taskbar'
-version      '1.1.0'
+version      '1.1.5'
 license      'GPL-3.0-or-later'
 author       'KKasutaja'
 repository   'https://github.com/kkasutaja/kk-taskbar'
