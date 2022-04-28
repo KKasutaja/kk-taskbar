@@ -6,17 +6,13 @@
 
 ```lua
 -- RECOMMENDED USAGE
-TriggerEvent('KKF.UI.TaskBar', name, text, time, clip, dict, function()
+TriggerEvent('KKF.UI.TaskBar', name, text, time, clip, dict, freeze, function()
     -- Code
 end)
 
-exports['kk-taskbar']:TaskBar(name, text, time, clip, dict, function()
+exports['kk-taskbar']:Taskbar(name, text, time, clip, dict, freeze, function()
     -- Code
 end)
-
-if exports['kk-taskbar']:TaskBar(name, text, time, clip, dict) then
-    -- Code
-end
 
 -- DEPRECATED USAGE
 exports['kk-taskbar']:DrawBar(time, text, function()

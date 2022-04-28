@@ -8,7 +8,7 @@ local function loadAnimDict(dict)
 	end
 end
 
-local function TaskBar(name, text, time, clip, dict, cb)
+local function TaskBar(name, text, time, clip, dict, freeze, cb)
 	local playerPed = PlayerPedId()
 
 	if not actionInProgress then
@@ -21,18 +21,22 @@ local function TaskBar(name, text, time, clip, dict, cb)
 				TaskStartScenarioInPlace(playerPed, clip, 0, true)
 			end
 
+			if freeze then FreezeEntityPosition(playerPed, true) end
+
 			SendNUIMessage({type = 'ui', display = true, time = time, text = text})
 
 			if cb then
 				SetTimeout(time + 100, function()
 					if clip then ClearPedTasks(cache.ped) end
+					if freeze then FreezeEntityPosition(playerPed, false) end
 					cb()
 
 					actionInProgress = false
 				end)
 			else
-				if clip then ClearPedTasks(cache.ped) end
 				Wait(time + 100)
+				if clip then ClearPedTasks(cache.ped) end
+				if freeze then FreezeEntityPosition(playerPed, false) end
 
 				actionInProgress = false; return true
 			end
@@ -45,7 +49,7 @@ local function TaskBar(name, text, time, clip, dict, cb)
 end
 
 local function DrawBar(time, text, cb)
-	TaskBar('deprecated_taskBar', text, time, nil, nil, cb)
+	TaskBar('deprecated_taskBar', text, time, nil, nil, false, cb)
 end
 -- Functions end
 
