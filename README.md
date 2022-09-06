@@ -1,7 +1,5 @@
 # kk-taskbar
 
-#### Preview [https://i.imgur.com/DoYpuzT.png]
-
 #### Usage
 
 ```lua
