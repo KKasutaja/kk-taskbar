@@ -1,16 +1,16 @@
--- Fx Data
-fx_version   'cerulean'
-lua54        'yes'
-game         'gta5'
+fx_version 'cerulean'
+game 'gta5'
 
--- Resource Data
-name         'kk-taskbar'
-version      '1.1.5'
-license      'GPL-3.0-or-later'
-author       'KKasutaja'
-repository   'https://github.com/kkasutaja/kk-taskbar'
-description  'Taskbar system for FiveM'
+author 'KKasutaja'
+github 'https://github.com/KKasutaja'
 
--- Script Files
-server_script 'server.lua'
+ui_page 'ui/index.html'
+
 client_script 'client.lua'
+
+files {
+    'ui/index.html',
+    'ui/main.js'
+}
+
+lua54 'yes'

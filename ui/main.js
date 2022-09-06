@@ -1,26 +1,36 @@
-$(function(){
-    window.onload = (e) => { 
-        window.addEventListener('message', (event) => {	            
-            var item = event.data;
-            if (item !== undefined && item.type === "ui") {		                
-                if (item.display === true) {
-                    $(".container").show();
+const progress = () => {
+    return {
+        init () {
+            window.addEventListener('message', (event) => {	            
+                var item = event.data;
 
-                    var text = item.text;
-                    var time = item.time;
+                if (item !== undefined && item.type === 'ui') {		                
+                    const onePercent = item.time * 0.01
+                    this.show = true; this.action = item.text;
 
-                    $('.task_text').text(text);
+                    const updateProgress = setInterval(() => { 
+                        this.percent += 1;
 
-                    $('.task_bar').stop().css({ width: '0px' }).animate({
-                        width: '100%',
-                    }, time, 'linear', function () {
-                        $(".container").hide();
-                    });			
+                        if (this.percent >= 100) {
+                            clearInterval(updateProgress); $.post('https://kk-taskbar/actionDone', JSON.stringify({}));
 
-                } else {
-                    $(".container").hide();
+                            this.show = false; this.percent = 0
+                        }
+                    }, onePercent);
+                } else if (item.type == 'show') {
+                    this.allHidden = false
+                } else if (item.type == 'hide') { 
+                    this.allHidden = true
+                } else if (item.type == 'cancel') {
+                    this.percent = 100
                 }
-            }
-        });
-    };
-});
+            });
+        },
+
+        circumference: 30 * 2 * Math.PI,
+        percent: 0,
+        action: 'TEGEVUS',
+        show: false,
+        allHidden: false
+    }
+}

@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="//unpkg.com/alpinejs" defer></script>
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
 	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
-
-	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-
     <script src="main.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="tasks">
-			<div class="task_bar">
-				<div class="task_text">0%</div>
+	<div id="container" x-data="progress" class="h-screen flex flex-col items-center justify-center" x-show="!allHidden">
+		<div class="absolute flex top-3/4 text-center" x-show="show">
+			<div class="overflow-hidden rounded-full">
+				<svg class="w-20 h-20">
+					<circle
+						class="text-gray-800"
+						stroke-width="6"
+						stroke="currentColor"
+						fill="transparent"
+						r="30"
+						cx="40"
+						cy="40"
+					/>
+
+					<circle
+						class="text-indigo-700 progress"
+						stroke-width="5.5"
+						:stroke-dasharray="circumference"
+						:stroke-dashoffset="circumference - percent / 100 * circumference"
+						stroke="currentColor"
+						fill="transparent"
+						r="30"
+						cx="40"
+						cy="40"
+					/>
+				</svg>			
 			</div>
+
+			<span class="font-medium text-gray-200 uppercase mt-auto mb-auto" x-text="action"></span>
 		</div>
 	</div>
 </body>
