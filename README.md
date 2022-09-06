@@ -6,7 +6,7 @@
 
 ```lua
 -- RECOMMENDED USAGE
-local progress = exports['kk-taskbar']:Taskbar(name, text, time, clip, dict, freeze)
+local progress = exports['kk-taskbar']:TaskBar(name, text, time, clip, dict, freeze)
 
 if progress then
     -- Code
